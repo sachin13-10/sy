@@ -1,0 +1,448 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SG Study Hub</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+</head>
+<body>
+    <section class="sub-header">
+        <nav>
+            <a href="index.html"><img src="images/logo.png"></a>
+            <div class="nav-links" id="navLinks">  
+                <i class="fa fa-close" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="course.html">SUBJECTS</a></li>
+                    <li><a href="code.html">OUTPUTS</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+            <h1>Our Courses</h1>
+    </section>
+    
+    
+<!---------- course ----------->
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        color: #333;
+    }
+
+    header {
+        background-color: #bdc3c7; /* Grey background */
+        padding: 15px;
+        text-align: center;
+        color: white;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 24px;
+    }
+
+    .subject-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .subject-block {
+        width: 250px;
+        margin: 15px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .subject-block h2 {
+        font-size: 20px;
+        color: #4CAF50;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+
+    .options-container {
+        display: none;
+        text-align: center;
+    }
+
+    .options-container button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 15px;
+        margin: 5px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .options-container button:hover {
+        background-color: #45a049;
+    }
+
+    .pdf-list {
+        list-style-type: none;
+        padding: 0;
+        display: none;
+        text-align: center;
+    }
+
+    .pdf-item {
+        background-color: #f9f9f9;
+        margin: 5px 0;
+        padding: 8px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .pdf-item a {
+        text-decoration: none;
+        color: #333;
+        font-size: 14px;
+        display: block;
+    }
+
+    .pdf-item a:hover {
+        color: #4CAF50;
+    }
+
+    .back-button {
+        margin-top: 20px;
+        padding: 10px 15px;
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    .back-button:hover {
+        background-color: #c0392b;
+    }
+
+    .pdf-viewer {
+        width: 100%;
+        height: 500px;
+        border: none;
+    }
+
+    .download-button {
+        background-color: #3498db;
+        color: white;
+        padding: 10px 15px;
+        margin-top: 20px;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .download-button:hover {
+        background-color: #2980b9;
+    }
+
+    /* Make it responsive */
+    @media (max-width: 768px) {
+        .subject-block {
+            width: 100%;
+            margin: 10px 0;
+        }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Practical & Assignment PDF Repository</h1>
+    <p>Click on a subject, choose Practical or Assignment, and view or download the PDFs directly!</p>
+</header>
+
+<div class="subject-container">
+    <!-- Subject 1 -->
+    <div class="subject-block" onclick="showOptions(1)">
+        <h2>OOP using java</h2>
+    </div>
+
+    <!-- Subject 2 -->
+    <div class="subject-block" onclick="showOptions(2)">
+        <h2>DBMS</h2>
+    </div>
+
+    <!-- Subject 3 -->
+    <div class="subject-block" onclick="showOptions(3)">
+        <h2>Microprocesser</h2>
+    </div>
+
+    <!-- Subject 4 -->
+    <div class="subject-block" onclick="showOptions(4)">
+        <h2>ADSA</h2>
+    </div>
+
+    <!-- Subject 5 -->
+    <div class="subject-block" onclick="showOptions(5)">
+        <h2>HTML&CSS</h2>
+    </div>
+
+</div>
+
+<!-- Options container (Practical / Assignment choice) -->
+<div id="options1" class="options-container">
+    <h3>Choose: Practical or Assignment</h3>
+    <button onclick="showPractical(1)">Practical</button>
+    <button onclick="showAssignment(1)">Assignment</button>
+    <button class="back-button" onclick="backToSubjectSelection()">Back</button>
+</div>
+
+<!-- PDF List for Practical PDFs (example for Subject 1) -->
+<div id="practical1" class="pdf-list">
+    <h3>Practical PDFs for oops</h3>
+    <div class="pdf-item" onclick="viewPDF('pdfs/oop/pra/oop pra1 by sg.pdf')">Practical 1</div>
+    
+    <button class="back-button" onclick="backToOptions(1)">Back to Options</button>
+</div>
+
+<!-- PDF List for Assignment PDFs (example for Subject 1) -->
+<div id="assignment1" class="pdf-list">
+    <h3>Assignment PDFs for oops</h3>
+    <p><b>not given till now</b></p>
+    <button class="back-button" onclick="backToOptions(1)">Back to Options</button>
+</div>
+
+
+
+
+
+
+<!-- Options container (Practical / Assignment choice) sub2 -->
+<div id="options2" class="options-container">
+    <h3>Choose: Practical or Assignment</h3>
+    <button onclick="showPractical(2)">Practical</button>
+    <button onclick="showAssignment(2)">Assignment</button>
+    <button class="back-button" onclick="backToSubjectSelection()">Back</button>
+</div>
+
+<!-- PDF List for Practical PDFs (example for Subject 1) -->
+<div id="practical2" class="pdf-list">
+    <h3>Practical PDFs for DBMS</h3>
+    <h3>NOT GIVEN TILL NOW</h3>
+    <button class="back-button" onclick="backToOptions(2)">Back to Options</button>
+</div>
+
+<!-- PDF List for Assignment PDFs (example for Subject 1) -->
+<div id="assignment2" class="pdf-list">
+    <h3>Assignment PDFs for DBMS</h3>
+    <h3>NOT GIVEN TILL NOW</h3>
+    <button class="back-button" onclick="backToOptions(2)">Back to Options</button>
+</div>
+
+
+
+
+
+
+<!-- Options container (Practical / Assignment choice) -->
+<div id="options3" class="options-container">
+    <h3>Choose: Practical or Assignment</h3>
+    <button onclick="showPractical(3)">Practical</button>
+    <button onclick="showAssignment(3)">Assignment</button>
+    <button class="back-button" onclick="backToSubjectSelection()">Back</button>
+</div>
+
+<!-- PDF List for Practical PDFs (example for Subject 1) -->
+<div id="practical3" class="pdf-list">
+    <h3>Practical PDFs for MBR</h3>
+    <div class="pdf-item" onclick="viewPDF('pdfs/MBR/MBR PRACTICAL 1 by SG.pdf')">Practical 1</div>
+    <div class="pdf-item" onclick="viewPDF('pdfs/MBR/MBR PRACTICAL 2 by SG.pdf')">Practical 2</div>
+    <div class="pdf-item" onclick="viewPDF('pdfs/MBR/MBR PRACTICAL 3 by SG.pdf')">Practical 3</div>
+    <h3>only 3 completed</h3>
+    <button class="back-button" onclick="backToOptions(3)">Back to Options</button>
+</div>
+
+<!-- PDF List for Assignment PDFs (example for Subject 1) -->
+<div id="assignment3" class="pdf-list">
+    <h3>Assignment PDFs for MBR</h3>
+    <h3>NOT GIVEN TILL NOW</h3>
+    
+    <button class="back-button" onclick="backToOptions(3)">Back to Options</button>
+</div>
+
+
+
+
+
+
+
+
+<!-- Options container (Practical / Assignment choice) -->
+<div id="options4" class="options-container">
+    <h3>Choose: Practical or Assignment</h3>
+    <button onclick="showPractical(4)">Practical</button>
+    <button onclick="showAssignment(4)">Assignment</button>
+    <button class="back-button" onclick="backToSubjectSelection()">Back</button>
+</div>
+
+<!-- PDF List for Practical PDFs (example for Subject 1) -->
+<div id="practical4" class="pdf-list">
+    <h3>Practical PDFs for ADSA</h3>
+    <h3>coming</h3>
+    <button class="back-button" onclick="backToOptions(4)">Back to Options</button>
+</div>
+
+<!-- PDF List for Assignment PDFs (example for Subject 1) -->
+<div id="assignment4" class="pdf-list">
+    <h3>NOT GIVEN TILL NOW</h3>
+    <button class="back-button" onclick="backToOptions(4)">Back to Options</button>
+</div>
+
+
+
+
+
+
+<!-- Options container (Practical / Assignment choice) -->
+<div id="options5" class="options-container">
+    <h3>Choose: Practical or Assignment</h3>
+    <button onclick="showPractical(5)">Practical</button>
+    <button onclick="showAssignment(5)">Assignment</button>
+    <button class="back-button" onclick="backToSubjectSelection()">Back</button>
+</div>
+
+<!-- PDF List for Practical PDFs (example for Subject 1) -->
+<div id="practical5" class="pdf-list">
+    <h3>Practical PDFs for HTML&CSS</h3>
+    <h3>SUB DONT HAVE PRACTICAL</h3>
+    <button class="back-button" onclick="backToOptions(5)">Back to Options</button>
+</div>
+
+<!-- PDF List for Assignment PDFs (example for Subject 1) -->
+<div id="assignment5" class="pdf-list">
+    <h3>Assignment PDFs for HTML&CSS</h3>
+    <div class="pdf-item" onclick="viewPDF('pdfs/OE/assignment 1.pdf')">Assignment 1</div>
+    <button class="back-button" onclick="backToOptions(5)">Back to Options</button>
+</div>
+
+
+
+
+
+
+
+
+<!-- PDF Viewer -->
+<div id="pdfViewerContainer" style="display: none; text-align: center;">
+    <h3>PDF Viewer</h3>
+    <iframe id="pdfViewer" class="pdf-viewer" src="" frameborder="0"></iframe>
+    <div>
+        <a id="downloadButton" class="download-button" href="" download>Download PDF</a>
+    </div>
+    <button class="back-button" onclick="backToPDFList()">Back to PDF List</button>
+</div>
+
+<script>
+    // Show options to choose between Practical and Assignment
+    function showOptions(subjectNumber) {
+        document.getElementById(`options${subjectNumber}`).style.display = 'block';
+        // Hide the subject block after clicking
+        const subjectBlocks = document.querySelectorAll('.subject-block');
+        subjectBlocks.forEach(block => block.style.display = 'none');
+    }
+
+    // Show Practical PDFs for a subject
+    function showPractical(subjectNumber) {
+        document.getElementById(`options${subjectNumber}`).style.display = 'none';
+        document.getElementById(`practical${subjectNumber}`).style.display = 'block';
+    }
+
+    // Show Assignment PDFs for a subject
+    function showAssignment(subjectNumber) {
+        document.getElementById(`options${subjectNumber}`).style.display = 'none';
+        document.getElementById(`assignment${subjectNumber}`).style.display = 'block';
+    }
+
+    // Open the PDF in the viewer and show the download link
+    function viewPDF(pdfURL) {
+        document.getElementById('pdfViewer').src = pdfURL;
+        document.getElementById('downloadButton').href = pdfURL; // Set the download link
+        document.getElementById('pdfViewerContainer').style.display = 'block';
+        document.getElementById('practical1').style.display = 'none';
+        document.getElementById('assignment1').style.display = 'none';
+    }
+
+    // Go back to the Subject Selection screen
+    function backToSubjectSelection() {
+        const options = document.querySelectorAll('.options-container');
+        options.forEach(option => option.style.display = 'none');
+
+        const subjectBlocks = document.querySelectorAll('.subject-block');
+        subjectBlocks.forEach(block => block.style.display = 'block');
+    }
+
+    // Go back to the Practical/Assignment options screen
+    function backToOptions(subjectNumber) {
+        document.getElementById(`practical${subjectNumber}`).style.display = 'none';
+        document.getElementById(`assignment${subjectNumber}`).style.display = 'none';
+        document.getElementById(`options${subjectNumber}`).style.display = 'block';
+    }
+
+    // Go back to the PDF List
+    function backToPDFList() {
+        document.getElementById('pdfViewerContainer').style.display = 'none';
+        document.getElementById('practical1').style.display = 'block';
+        document.getElementById('assignment1').style.display = 'block';
+    }
+</script>
+
+<!----JavaScript for toggle menu---->
+<script>
+    var navLinks = document.getElementById("navLinks");
+
+    function showMenu() {
+        navLinks.style.right = "0";
+    }
+
+    function hideMenu() {
+        navLinks.style.right = "-200px";
+    }
+</script>  
+<!-------- footer ---------->
+
+<section class="footer">
+    <h4>About Us</h4>
+    <p>This is my first website build for fun<br>To get any pdf anywhere and code output without any hassle</p>
+    <div class="icons">
+        <a href="https://www.facebook.com/share/1AXEQDMuZA/"><i class="fa fa-facebook"></i></a>
+        <a href="https://www.instagram.com/sachin_ghotekar?igsh=MTNtcmxnbWI4MW52cA=="><i class="fa fa-twitter"></i></a>
+        <a href="https://www.instagram.com/sachin_ghotekar?igsh=MTNtcmxnbWI4MW52cA=="><i class="fa fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/sachin-ghotekar-41316a293?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fa fa-linkedin"></i></a>
+        
+    </div>
+    <a href="https://www.instagram.com/sachin_ghotekar?igsh=MTNtcmxnbWI4MW52cA==" class="footer-link"><p>made with <i class="fa fa-heart-o"></i> by Sachin Ghotekar</p></a>
+</section>    
+
+
+<!----JavaScript for toggle menu---->
+<script>
+var navLinks = document.getElementById("navLinks");
+
+function showMenu() {
+    navLinks.style.right = "0";
+}
+
+function hideMenu() {
+    navLinks.style.right = "-200px";
+}
+</script> 
+    
+</body>
+</html>    
